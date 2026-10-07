@@ -377,11 +377,11 @@
       <div>
         <label class="field-label">Budget</label>
         <select id="budget">
-          <option value="Rp1,5 – 3 juta">Rp1,5 – 3 juta</option>
+          <option value="Rp1.5 – 3 juta">Rp1.5 – 3 juta</option>
           <option value="Rp3 – 5 juta">Rp3 – 5 juta</option>
           <option value="Rp5 – 10 juta">Rp5 – 10 juta</option>
           <option value="Di atas Rp10 juta">Di atas Rp10 juta</option>
-          <option value="Belum tahu, mau konsultasi dulu">Belum tahu, mau konsultasi dulu</option>
+          <option value="Belum tahu - mau konsultasi dulu">Belum tahu - mau konsultasi dulu</option>
         </select>
         <p class="budget-desc" id="budget-desc"></p>
       </div>
@@ -490,11 +490,11 @@ document.getElementById('catatan').addEventListener('input', updateProgress);
 document.getElementById('consent-check').addEventListener('change', updateProgress);
 
 const budgetDescriptions = {
-  'Rp1,5 – 3 juta': 'Cocok untuk: undangan digital, landing page sederhana, atau portfolio personal. 1 halaman (single page), template disesuaikan warna/konten, maks 2x revisi minor.',
+  'Rp1.5 – 3 juta': 'Cocok untuk: undangan digital, landing page sederhana, atau portfolio personal. 1 halaman (single page), template disesuaikan warna/konten, maks 2x revisi minor.',
   'Rp3 – 5 juta': 'Cocok untuk: landing page lengkap atau company profile kecil (3–5 halaman). Copywriting dibantu AI, desain disesuaikan brand, integrasi form kontak/WA.',
   'Rp5 – 10 juta': 'Cocok untuk: company profile lengkap, sales funnel, atau portfolio profesional banyak halaman. 6+ halaman, custom design, integrasi lanjutan (form ke email/WA otomatis, galeri produk).',
   'Di atas Rp10 juta': 'Cocok untuk: online course, sales funnel kompleks bertahap, atau kebutuhan khusus (member area, payment gateway). Scope besar — perlu diskusi detail dulu sebelum harga final.',
-  'Belum tahu, mau konsultasi dulu': 'Belum apa-apa, santai — ceritakan kebutuhan kamu di catatan tambahan, kami bantu rekomendasikan paket yang pas.'
+  'Belum tahu - mau konsultasi dulu': 'Belum apa-apa, santai — ceritakan kebutuhan kamu di catatan tambahan, kami bantu rekomendasikan paket yang pas.'
 };
 function updateBudgetDesc(){
   const val = document.getElementById('budget').value;
@@ -505,14 +505,14 @@ updateBudgetDesc();
 
 // --- Rush fee algorithm ---
 const tierMinDays = {
-  'Rp1,5 – 3 juta': 3,
+  'Rp1.5 – 3 juta': 3,
   'Rp3 – 5 juta': 5,
   'Rp5 – 10 juta': 7,
   'Di atas Rp10 juta': null,
-  'Belum tahu, mau konsultasi dulu': null
+  'Belum tahu - mau konsultasi dulu': null
 };
 const tierLabel = {
-  'Rp1,5 – 3 juta': '3–4 hari kerja',
+  'Rp1.5 – 3 juta': '3–4 hari kerja',
   'Rp3 – 5 juta': '5–7 hari kerja',
   'Rp5 – 10 juta': '7–12 hari kerja'
 };
