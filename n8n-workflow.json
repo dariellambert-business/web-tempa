@@ -1,0 +1,165 @@
+{
+  "name": "Web Tempa — Client Request Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "web-tempa",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "web-tempa-intake"
+    },
+    {
+      "parameters": {
+        "resource": "page",
+        "operation": "create",
+        "databaseId": "aca1d500-d24d-4409-a1c4-f9f587460b1e",
+        "title": "={{ $json.body.nama_bisnis }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Status",
+              "type": "status",
+              "statusValue": "New"
+            },
+            {
+              "key": "Tipe Bisnis",
+              "type": "select",
+              "selectValue": "={{ $json.body.tipe_bisnis }}"
+            },
+            {
+              "key": "Tujuan Website",
+              "type": "richText",
+              "textContent": "={{ $json.body.tujuan_website }}"
+            },
+            {
+              "key": "Halaman Dibutuhkan",
+              "type": "richText",
+              "textContent": "={{ $json.body.halaman_dibutuhkan }}"
+            },
+            {
+              "key": "Fitur",
+              "type": "richText",
+              "textContent": "={{ $json.body.fitur }}"
+            },
+            {
+              "key": "Kesiapan Konten",
+              "type": "richText",
+              "textContent": "={{ $json.body.kesiapan_konten }}"
+            },
+            {
+              "key": "Domain",
+              "type": "richText",
+              "textContent": "={{ $json.body.domain }}"
+            },
+            {
+              "key": "Hosting",
+              "type": "richText",
+              "textContent": "={{ $json.body.hosting }}"
+            },
+            {
+              "key": "Tone & Gaya",
+              "type": "richText",
+              "textContent": "={{ $json.body.tone_dan_gaya }}"
+            },
+            {
+              "key": "Referensi Desain",
+              "type": "url",
+              "urlValue": "={{ $json.body.referensi_desain }}"
+            },
+            {
+              "key": "Budget",
+              "type": "select",
+              "selectValue": "={{ $json.body.budget }}"
+            },
+            {
+              "key": "Deadline",
+              "type": "date",
+              "dateValue": "={{ $json.body.deadline }}"
+            },
+            {
+              "key": "Rush Project",
+              "type": "checkbox",
+              "checkboxValue": "={{ $json.body.rush_project }}"
+            },
+            {
+              "key": "Kontak",
+              "type": "richText",
+              "textContent": "={{ $json.body.kontak }}"
+            },
+            {
+              "key": "Catatan Tambahan",
+              "type": "richText",
+              "textContent": "={{ $json.body.catatan_tambahan }}"
+            },
+            {
+              "key": "Source",
+              "type": "richText",
+              "textContent": "={{ $json.body.source }}"
+            }
+          ]
+        }
+      },
+      "id": "notion-node",
+      "name": "Notion — Simpan Request",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "credentials": {
+        "notionApi": {
+          "id": "GANTI_NOTION_CREDENTIAL_ID",
+          "name": "Notion — Web Tempa"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.callmebot.com/whatsapp.php?phone=0895806680374&text={{ encodeURIComponent('🔔 *ORDER BARU — Web Tempa*%0A%0ANama: ' + $('Webhook').item.json.body.nama_bisnis + '%0AKontak: ' + $('Webhook').item.json.body.kontak + '%0ABudget: ' + $('Webhook').item.json.body.budget + '%0ADeadline: ' + ($('Webhook').item.json.body.deadline || '-') + '%0ARush: ' + ($('Webhook').item.json.body.rush_project ? 'YA ⚡' : 'Tidak') + '%0A%0A✅ Data sudah tersimpan di Notion.') }}&apikey=GANTI_CALLMEBOT_APIKEY",
+        "options": {}
+      },
+      "id": "wa-node",
+      "name": "WhatsApp Notif",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"status\": \"ok\", \"message\": \"Data berhasil diterima\" }",
+        "options": {}
+      },
+      "id": "response-node",
+      "name": "Response ke Form",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 460]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Notion — Simpan Request", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Notion — Simpan Request": {
+      "main": [
+        [
+          { "node": "WhatsApp Notif", "type": "main", "index": 0 },
+          { "node": "Response ke Form", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
