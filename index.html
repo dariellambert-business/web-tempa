@@ -699,13 +699,13 @@ document.getElementById('send-order').addEventListener('click', async ()=>{
   };
 
   // ── Kirim ke n8n webhook ──
-  const N8N_WEBHOOK = 'GANTI_DENGAN_URL_N8N_WEBHOOK_KAMU'; // ← ganti ini!
+  const WEBHOOK_URL = 'https://hook.us2.make.com/2uvsyj7vp7lzb6wh384jnqtyrhlawa9j';
 
   btn.textContent = 'Mengirim...';
   btn.disabled = true;
 
   try {
-    const res = await fetch(N8N_WEBHOOK, {
+    const res = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
