@@ -272,7 +272,7 @@
     <h1>Web Tempa — Form Requirement Website</h1>
     <p class="subtitle">Tempa website, tempa bisnis. Isi detail kebutuhan kamu — makin lengkap, makin presisi hasil & estimasinya. ✅</p>
     <div class="progress-row">
-      <span id="progress-text">0 / 9 terisi</span>
+      <span id="progress-text">0 / 8 terisi</span>
       <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
   </div>
@@ -280,9 +280,19 @@
   <!-- Step 1: Contact -->
   <div class="step" data-step="contact">
     <div class="step-head"><div class="step-num">1</div><div class="step-title">Nama & kontak kamu</div></div>
-    <p class="step-hint">Nama lengkap / nama bisnis, dan nomor WA atau email aktif</p>
+    <p class="step-hint">Nama lengkap / nama bisnis, kontak aktif, dan lokasi bisnis</p>
     <input type="text" id="client-name" placeholder="Nama lengkap atau nama bisnis">
     <input type="text" id="contact" placeholder="0812xxxxxxxx atau email@domain.com">
+    <div class="two-col">
+      <div>
+        <label class="field-label">WhatsApp bisnis (untuk dipasang di website)</label>
+        <input type="text" id="wa-bisnis" placeholder="0812xxxxxxxx (nomor yang tampil di website)">
+      </div>
+      <div>
+        <label class="field-label">Kota / area operasi bisnis</label>
+        <input type="text" id="kota" placeholder="Contoh: Jakarta Selatan, Bandung, Surabaya">
+      </div>
+    </div>
     <div class="note"><span class="ic">⏱️</span> Respon WA biasanya dalam 1 hari kerja (di luar jam kerja kantor 9–18 WIB). Untuk follow-up cepat, sebut nama project di chat.</div>
   </div>
 
@@ -301,21 +311,33 @@
     <input type="text" id="jenis-lainnya" placeholder="Sebutkan jenis website yang kamu mau" style="display:none;">
   </div>
 
-  <!-- Step 3: Tujuan -->
+  <!-- Step 3: Profil Bisnis -->
+  <div class="step" data-step="profil-bisnis">
+    <div class="step-head"><div class="step-num">3</div><div class="step-title">Tentang bisnis kamu</div></div>
+    <p class="step-hint">Info ini membantu AI kami menghasilkan konten website yang akurat & menjual</p>
+    <label class="field-label">Bidang usaha spesifik</label>
+    <input type="text" id="bidang-usaha" placeholder="Contoh: Skincare lokal, Jasa fotografi wedding, Kopi specialty, Klinik gigi">
+    <label class="field-label">Ceritakan singkat bisnis kamu</label>
+    <textarea id="deskripsi-bisnis" placeholder="Apa yang dijual/ditawarkan, siapa target pelanggannya? Contoh: Jualan hijab premium untuk wanita usia 25-40 yang cari bahan adem tapi tetap stylish"></textarea>
+    <label class="field-label">Keunggulan utama (USP) — apa yang bikin beda dari kompetitor?</label>
+    <textarea id="usp" placeholder="Contoh: Bahan premium tapi harga terjangkau, pengiriman same-day di Jabodetabek, garansi 30 hari uang kembali"></textarea>
+  </div>
+
+  <!-- Step 4: Tujuan -->
   <div class="step" data-step="tujuan">
-    <div class="step-head"><div class="step-num">3</div><div class="step-title">Tujuan utama website ini</div></div>
+    <div class="step-head"><div class="step-num">4</div><div class="step-title">Tujuan utama website ini</div></div>
     <textarea id="tujuan" placeholder="Contoh: Jualan produk skincare, kumpulkan leads, atau profil perusahaan untuk klien B2B"></textarea>
   </div>
 
-  <!-- Step 4: Halaman -->
+  <!-- Step 5: Halaman -->
   <div class="step" data-step="halaman">
-    <div class="step-head"><div class="step-num">4</div><div class="step-title">Halaman / section yang dibutuhkan</div></div>
+    <div class="step-head"><div class="step-num">5</div><div class="step-title">Halaman / section yang dibutuhkan</div></div>
     <textarea id="halaman" placeholder="Contoh: Home, Tentang Kami, Produk, Testimoni, Kontak"></textarea>
   </div>
 
-  <!-- Step 5: Fitur tambahan -->
+  <!-- Step 6: Fitur tambahan -->
   <div class="step" data-step="fitur">
-    <div class="step-head"><div class="step-num">5</div><div class="step-title">Fitur yang diinginkan</div></div>
+    <div class="step-head"><div class="step-num">6</div><div class="step-title">Fitur yang diinginkan</div></div>
     <p class="step-hint">Pilih fitur fungsional (boleh lebih dari satu) — beda dari halaman, ini soal fungsi teknis di website</p>
     <div class="chip-grid" id="fitur-grid">
       <div class="chip" data-val="Form kontak ke email/WA"><span class="ic">📩</span>Form kontak ke email/WA</div>
@@ -329,9 +351,9 @@
     </div>
   </div>
 
-  <!-- Step 6: Kesiapan konten -->
+  <!-- Step 7: Kesiapan konten -->
   <div class="step" data-step="konten">
-    <div class="step-head"><div class="step-num">6</div><div class="step-title">Kesiapan konten (teks & foto)</div></div>
+    <div class="step-head"><div class="step-num">7</div><div class="step-title">Kesiapan konten (teks & foto)</div></div>
     <p class="step-hint">Ini menentukan estimasi waktu pengerjaan — konten yang belum siap butuh waktu tambahan</p>
     <div class="chip-grid" id="konten-grid">
       <div class="chip" data-val="Sudah siap semua"><span class="ic">✅</span>Sudah siap semua</div>
@@ -341,9 +363,9 @@
     <div class="note"><span class="ic">📝</span> Kalau konten belum siap dan perlu dibantu (copywriting/foto), akan ada penyesuaian waktu & biaya tambahan yang dikonfirmasi saat follow-up.</div>
   </div>
 
-  <!-- Step 7: Domain & hosting -->
+  <!-- Step 8: Domain & hosting -->
   <div class="step" data-step="infra">
-    <div class="step-head"><div class="step-num">7</div><div class="step-title">Domain & hosting</div></div>
+    <div class="step-head"><div class="step-num">8</div><div class="step-title">Domain & hosting</div></div>
     <div class="two-col">
       <div>
         <label class="field-label">Sudah ada domain?</label>
@@ -356,9 +378,9 @@
     </div>
   </div>
 
-  <!-- Step 6: Mood + referensi -->
+  <!-- Step 9: Mood + referensi -->
   <div class="step" data-step="mood">
-    <div class="step-head"><div class="step-num">8</div><div class="step-title">Referensi gaya / mood website</div></div>
+    <div class="step-head"><div class="step-num">9</div><div class="step-title">Referensi gaya / mood website</div></div>
     <div class="chip-grid" id="mood-grid">
       <div class="chip" data-val="Minimalis">Minimalis</div>
       <div class="chip" data-val="Elegan">Elegan</div>
@@ -366,13 +388,23 @@
       <div class="chip" data-val="Korporat">Korporat</div>
       <div class="chip" data-val="Lainnya">Lainnya</div>
     </div>
+    <div class="two-col">
+      <div>
+        <label class="field-label">Warna brand / warna favorit (jika ada)</label>
+        <input type="text" id="warna-brand" placeholder="Contoh: biru navy & emas, hitam-putih, pastel pink">
+      </div>
+      <div>
+        <label class="field-label">Sudah punya logo / branding?</label>
+        <select id="has-branding"><option value="Belum ada">Belum ada</option><option value="Sudah ada logo">Sudah ada logo</option><option value="Sudah ada logo + brand guideline">Sudah ada logo + brand guideline</option></select>
+      </div>
+    </div>
     <label class="field-label">Link referensi website (jika ada)</label>
     <input type="text" id="ref-link" placeholder="https://contoh-website-yang-disuka.com">
   </div>
 
-  <!-- Step 7: Budget & deadline -->
+  <!-- Step 10: Budget & deadline -->
   <div class="step" data-step="budget">
-    <div class="step-head"><div class="step-num">9</div><div class="step-title">Budget & deadline</div></div>
+    <div class="step-head"><div class="step-num">10</div><div class="step-title">Budget & deadline</div></div>
     <div class="two-col">
       <div>
         <label class="field-label">Budget</label>
@@ -395,16 +427,16 @@
     <div class="note" id="rush-note" style="display:none;"></div>
   </div>
 
-  <!-- Step 8: Logo / aset -->
+  <!-- Step 11: Logo / aset -->
   <div class="step" data-step="aset">
-    <div class="step-head"><div class="step-num">10</div><div class="step-title">Logo / aset visual</div></div>
+    <div class="step-head"><div class="step-num">11</div><div class="step-title">Logo / aset visual</div></div>
     <label class="upload-zone" for="file-input">⬆️ Upload logo, foto produk, atau dokumen pendukung lain (PDF/TXT/sitemap/referensi)<input type="file" id="file-input" multiple></label>
     <div id="file-list"></div>
   </div>
 
-  <!-- Step 9: Catatan -->
+  <!-- Step 12: Catatan -->
   <div class="step" data-step="catatan">
-    <div class="step-head"><div class="step-num">11</div><div class="step-title">Catatan tambahan</div></div>
+    <div class="step-head"><div class="step-num">12</div><div class="step-title">Catatan tambahan</div></div>
     <textarea id="catatan" placeholder="Permintaan khusus lainnya bisa ditulis di sini"></textarea>
   </div>
 
@@ -469,6 +501,7 @@ fileInput.addEventListener('change', ()=>{
 const trackedSteps = [
   {key:'contact', check:()=>document.getElementById('client-name').value.trim().length>1 && document.getElementById('contact').value.trim().length>3},
   {key:'jenis', check:()=>selections.jenis.size>0},
+  {key:'profil-bisnis', check:()=>document.getElementById('bidang-usaha').value.trim().length>2 && document.getElementById('deskripsi-bisnis').value.trim().length>5},
   {key:'tujuan', check:()=>document.getElementById('tujuan').value.trim().length>3},
   {key:'halaman', check:()=>document.getElementById('halaman').value.trim().length>3},
   {key:'fitur', check:()=>true},
@@ -480,11 +513,12 @@ const trackedSteps = [
   {key:'catatan', check:()=>true},
 ];
 
-['client-name','contact','tujuan','halaman','deadline','jenis-lainnya'].forEach(id=>{
+['client-name','contact','wa-bisnis','kota','bidang-usaha','deskripsi-bisnis','usp','tujuan','halaman','deadline','jenis-lainnya','warna-brand'].forEach(id=>{
   document.getElementById(id).addEventListener('input', updateProgress);
 });
 document.getElementById('domain').addEventListener('change', updateProgress);
 document.getElementById('hosting').addEventListener('change', updateProgress);
+document.getElementById('has-branding').addEventListener('change', updateProgress);
 document.getElementById('budget').addEventListener('change', updateProgress);
 document.getElementById('catatan').addEventListener('input', updateProgress);
 document.getElementById('consent-check').addEventListener('change', updateProgress);
@@ -579,7 +613,7 @@ function updateProgress(){
     if(!el.classList.contains('done')) el.querySelector('.step-num').textContent = i+1;
   });
   // required for "filled" count: contact, jenis, tujuan, halaman, konten, mood, budget(deadline)
-  const requiredKeys = ['contact','jenis','tujuan','halaman','konten','mood','budget'];
+  const requiredKeys = ['contact','jenis','profil-bisnis','tujuan','halaman','konten','mood','budget'];
   let filled = 0;
   trackedSteps.forEach(s=>{ if(requiredKeys.includes(s.key) && s.check()) filled++; });
   const totalRequired = requiredKeys.length;
@@ -610,6 +644,11 @@ function buildSummary(){
       }
       return vals.join(', ') || '-';
     })()],
+    ['Bidang Usaha', document.getElementById('bidang-usaha').value || '-'],
+    ['Deskripsi Bisnis', document.getElementById('deskripsi-bisnis').value || '-'],
+    ['Keunggulan / USP', document.getElementById('usp').value || '-'],
+    ['WA Bisnis (untuk website)', document.getElementById('wa-bisnis').value || '-'],
+    ['Kota / Area', document.getElementById('kota').value || '-'],
     ['Tujuan Utama', document.getElementById('tujuan').value || '-'],
     ['Halaman / Section', document.getElementById('halaman').value || '-'],
     ['Fitur Diinginkan', Array.from(selections.fitur).join(', ') || '-'],
@@ -617,6 +656,8 @@ function buildSummary(){
     ['Domain', document.getElementById('domain').value],
     ['Hosting', document.getElementById('hosting').value],
     ['Mood / Gaya', Array.from(selections.mood).join(', ') || '-'],
+    ['Warna Brand', document.getElementById('warna-brand').value || '-'],
+    ['Branding Existing', document.getElementById('has-branding').value],
     ['Referensi Link', document.getElementById('ref-link').value || '-'],
     ['Budget', document.getElementById('budget').value],
     ['Deadline', document.getElementById('deadline').value || '-'],
@@ -680,7 +721,12 @@ document.getElementById('send-order').addEventListener('click', async ()=>{
   const payload = {
     nama_bisnis:        document.getElementById('client-name').value || '',
     kontak:             document.getElementById('contact').value || '',
+    wa_bisnis:          document.getElementById('wa-bisnis').value || '',
+    kota:               document.getElementById('kota').value || '',
     tipe_bisnis:        jeниsFinal.join(', '),
+    bidang_usaha:       document.getElementById('bidang-usaha').value || '',
+    deskripsi_bisnis:   document.getElementById('deskripsi-bisnis').value || '',
+    usp:                document.getElementById('usp').value || '',
     tujuan_website:     document.getElementById('tujuan').value || '',
     halaman_dibutuhkan: document.getElementById('halaman').value || '',
     fitur:              Array.from(selections.fitur || []).join(', '),
@@ -688,6 +734,8 @@ document.getElementById('send-order').addEventListener('click', async ()=>{
     domain:             document.getElementById('domain').value,
     hosting:            document.getElementById('hosting').value,
     tone_dan_gaya:      Array.from(selections.mood || []).join(', '),
+    warna_brand:        document.getElementById('warna-brand').value || '',
+    branding_existing:  document.getElementById('has-branding').value,
     referensi_desain:   document.getElementById('ref-link').value || '',
     budget:             document.getElementById('budget').value,
     deadline:           deadlineVal,
