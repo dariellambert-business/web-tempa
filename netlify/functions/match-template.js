@@ -79,6 +79,12 @@ exports.handler = async (event) => {
       built = buildPrompt(matches[0].code, client);
     }
 
+    // Map mesin code to Notion select label
+    const mesinLabels = {
+      M1: 'M1 ORDER', M2: 'M2 BOOKING', M3: 'M3 KATALOG+WA',
+      M4: 'M4 LISTING', M5: 'M5 COMPANY PROFILE', M6: 'M6 PORTFOLIO',
+    };
+
     return {
       statusCode: 200,
       headers,
@@ -87,6 +93,7 @@ exports.handler = async (event) => {
           code: m.code,
           title: m.title,
           mesin: m.mesin,
+          mesinLabel: mesinLabels[m.mesin] || m.mesin,
           designStyle: m.designStyle,
           score: m.score,
         })),
@@ -94,6 +101,7 @@ exports.handler = async (event) => {
           templateCode: built.templateCode,
           templateTitle: built.templateTitle,
           mesin: built.mesin,
+          mesinLabel: mesinLabels[built.mesin] || built.mesin,
           designStyle: built.designStyle,
           pages: built.pages,
           prompt1: built.prompt1,
